@@ -1,0 +1,44 @@
+name: Web (GitHub Pages)
+
+# Zverejní web JobProof na GitHub Pages:
+#   https://vlado-obona.github.io/jobproof-web/                – úvod
+#   https://vlado-obona.github.io/jobproof-web/sukromie/       – zásady súkromia (Google Play)
+#   https://vlado-obona.github.io/jobproof-web/zmazanie-uctu/  – zmazanie účtu (Google Play)
+#   https://vlado-obona.github.io/jobproof-web/vop/            – podmienky pilotu
+# Raz treba zapnúť: Settings → Pages → Build and deployment → Source: GitHub Actions.
+# Predvolené oprávnenia workflowov sú „Read“ → oprávnenia sú nastavené tu.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Zostaviť web
+        run: |
+          mkdir _site
+          cp -r index.html 404.html assets sukromie zmazanie-uctu vop _site/
+          touch _site/.nojekyll
+          for p in sukromie zmazanie-uctu vop; do test -f "_site/$p/index.html"; done
+          find _site -type f | sort
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - id: deployment
+        uses: actions/deploy-pages@v4
