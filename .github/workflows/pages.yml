@@ -5,6 +5,8 @@ name: Web (GitHub Pages)
 #   https://vlado-obona.github.io/jobproof-web/sukromie/       – zásady súkromia (Google Play)
 #   https://vlado-obona.github.io/jobproof-web/zmazanie-uctu/  – zmazanie účtu (Google Play)
 #   https://vlado-obona.github.io/jobproof-web/vop/            – podmienky pilotu
+#   https://vlado-obona.github.io/jobproof-web/app/            – web appka pre iPhone/iPad (pilot);
+#     priečinok app/ sem nahráva workflow „Web appka (PWA)“ z repa jobproof – needitovať ručne
 # Raz treba zapnúť: Settings → Pages → Build and deployment → Source: GitHub Actions.
 # Predvolené oprávnenia workflowov sú „Read“ → oprávnenia sú nastavené tu.
 on:
@@ -33,6 +35,10 @@ jobs:
         run: |
           mkdir _site
           cp -r index.html 404.html assets sukromie zmazanie-uctu vop _site/
+          if [ -d app ]; then
+            cp -r app _site/
+            test -f _site/app/index.html && test -f _site/app/jobproof_sw.js
+          fi
           touch _site/.nojekyll
           for p in sukromie zmazanie-uctu vop; do test -f "_site/$p/index.html"; done
           find _site -type f | sort
