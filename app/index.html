@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+  <!-- /jobproof-web/app/ nahradí `flutter build web --base-href` (pilot: /jobproof-web/app/) -->
+  <base href="/jobproof-web/app/">
+
+  <meta charset="UTF-8">
+  <!-- bez neho iOS rozloží návod na 980 px a zmenší ho (Flutter si viewport nastaví sám až pri štarte) -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="JobProof – obhliadka, ponuka a protokol priamo zo stavby.">
+  <meta name="theme-color" content="#121212">
+
+  <!-- iPhone / iPad: „Pridať na plochu“ → samostatná web appka (pilot bez TestFlightu) -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="JobProof">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="manifest" href="manifest.json">
+
+  <title>JobProof</title>
+  <style>
+    html, body { margin: 0; height: 100%; background: #121212; color: #ffffff;
+      font: 17px/1.5 -apple-system, system-ui, "Segoe UI", Roboto, sans-serif; }
+    .stranka { box-sizing: border-box; min-height: 100%; max-width: 560px; margin: 0 auto;
+      padding: max(24px, env(safe-area-inset-top)) 20px max(24px, env(safe-area-inset-bottom)); }
+    .logo { font-weight: 800; font-size: 1.6rem; letter-spacing: -.01em; }
+    .logo span { color: #ffc400; }   /* žltá len na čiernej */
+    .pas { height: 10px; margin: 12px -20px 20px;
+      background: repeating-linear-gradient(-55deg, #ffc400 0 14px, #121212 14px 28px); }
+    h1 { font-size: 1.3rem; margin: 0 0 12px; }
+    ol { padding-left: 1.4em; } li { margin: 10px 0; }
+    .pozor { border-left: 6px solid #ffc400; background: #1e1e1e; padding: 10px 14px; border-radius: 8px; }
+    a { color: #ffffff; text-decoration-color: #ffc400; text-decoration-thickness: 2px; }
+    .male { color: #bdbdbd; font-size: .9rem; }
+    #nacitavanie { display: flex; flex-direction: column; justify-content: center; }
+    [hidden] { display: none !important; }
+  </style>
+</head>
+<body>
+  <!-- Kým sa načíta appka -->
+  <div id="nacitavanie" class="stranka">
+    <div class="logo">Job<span>Proof</span></div>
+    <p class="male">Načítavam…</p>
+  </div>
+
+  <!-- iPhone / iPad v karte Safari: najprv pridať na plochu (úložisko appky na ploche je oddelené od Safari) -->
+  <div id="instalacia" class="stranka" hidden>
+    <div class="logo">Job<span>Proof</span></div>
+    <div class="pas"></div>
+    <h1>Pridaj si JobProof na plochu</h1>
+    <ol>
+      <li>Ťukni na <b>•••</b> vedľa adresy a potom na <b>Zdieľať</b>. Ak máš hore alebo dole celú lištu
+        s tlačidlami, ťukni rovno na <b>Zdieľať</b> – štvorček so šípkou.</li>
+      <li>Posuň zoznam nadol a vyber <b>Pridať na plochu</b>. Ak tam nie je, úplne dole ťukni na
+        <b>Upraviť akcie</b> a pridaj ju. Ak sa zobrazí prepínač <b>Otvoriť ako webovú aplikáciu</b>, nechaj ho zapnutý.</li>
+      <li>Ťukni na <b>Pridať</b> a appku otvor ikonou <b>JobProof</b> na ploche.</li>
+    </ol>
+    <p class="pozor">JobProof vždy otváraj <b>z ikony na ploche</b>. Prihlás sa až v nej – v Safari sú dáta oddelené
+      a fotky ani nahrávky z appky tam neuvidíš. Ikonu nemaž, kým sa všetko neodošle.</p>
+    <p class="male"><a href="./?prehliadac=1">Pokračovať v Safari</a> – len na vyskúšanie, nič tu neukladaj.</p>
+  </div>
+
+  <noscript><div class="stranka">JobProof potrebuje zapnutý JavaScript.</div></noscript>
+
+  <!-- web/flutter_bootstrap.js: kontrola inštalácie, service worker (offline), načítanie appky -->
+  <script src="flutter_bootstrap.js" async></script>
+</body>
+</html>
