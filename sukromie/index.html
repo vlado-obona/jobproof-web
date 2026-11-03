@@ -32,7 +32,7 @@ Kontakt pre otázky k osobným údajom: <a href="mailto:info@operatorsystem.sk">
   <li>Údaje používame <b>len na to, aby appka fungovala</b> – uloženie a záloha tvojich zákaziek, AI spracovanie obhliadky, tvorba dokumentov.</li>
   <li><b>Žiadne reklamy</b>, žiadne reklamné ani sledovacie nástroje, údaje <b>nepredávame</b> a nezdieľame na marketing.</li>
   <li>Appka <b>nezisťuje polohu</b>; z fotiek polohu (EXIF) odstraňujeme.</li>
-  <li>Dáta sú uložené na serveroch v <b>EÚ (Frankfurt)</b>, prenos je šifrovaný.</li>
+  <li>Dáta sú uložené na serveroch v <b>EÚ (Frankfurt)</b>, prenos je šifrovaný. AI spracovanie textu obhliadky môže prebiehať aj mimo EÚ (<a href="#ai">pozri nižšie</a>).</li>
   <li>Účet aj všetky dáta môžeš kedykoľvek <a href="../zmazanie-uctu/">zmazať</a>.</li>
 </ul>
 
@@ -69,18 +69,20 @@ Kontakt pre otázky k osobným údajom: <a href="mailto:info@operatorsystem.sk">
   <li><b>Internet</b> – záloha a AI spracovanie.</li>
 </ul>
 
-<h2>AI spracovanie</h2>
-<p>Po uzavretí obhliadky sa prepis hlasových poznámok a textové poznámky pošlú cez náš server na spracovanie modelom AI,
-  ktorý navrhne položky ponuky a zoznam chýbajúcich informácií. Appka nikdy nevolá AI priamo. Poskytovatelia AI
-  <b>nesmú používať tvoje dáta na trénovanie</b> svojich modelov. Návrh vždy kontroluješ a potvrdzuješ ty – AI
-  o ničom nerozhoduje (ceny ani DPH neurčuje).</p>
+<h2 id="ai">AI spracovanie</h2>
+<p>Po uzavretí obhliadky sa prepis hlasových poznámok, textové poznámky, rozmery a riziká pošlú cez náš server na
+  spracovanie modelom AI (Claude od spoločnosti Anthropic), ktorý navrhne položky ponuky a zoznam chýbajúcich
+  informácií. Appka nikdy nevolá AI priamo. <b>Fotky ani zvukové nahrávky AI neposielame</b> a údaje zákazníka
+  z evidencie (meno, telefón, adresu) tiež nie – v prepise však ostane, čo do hlasovej poznámky povieš.
+  Poskytovatelia AI <b>nesmú používať tvoje dáta na trénovanie</b> svojich modelov. Návrh vždy kontroluješ
+  a potvrdzuješ ty – AI o ničom nerozhoduje (ceny ani DPH neurčuje).</p>
 
 <h2>Komu údaje odovzdávame (sprostredkovatelia)</h2>
 <div class="table-wrap">
 <table>
   <tr><th>Kto</th><th>Na čo</th><th>Kde</th></tr>
   <tr><td>Supabase Pte. Ltd. (Singapur)</td><td>databáza, úložisko súborov, prihlásenie, serverové funkcie</td><td>údaje uložené v EÚ – Frankfurt (Nemecko); prípadný prístup z krajín mimo EÚ len na základe štandardných zmluvných doložiek EÚ (zmluva o spracúvaní so Supabase)</td></tr>
-  <tr><td>Anthropic Ireland, Limited (Claude API); ďalší sprostredkovateľ Anthropic, PBC (USA)</td><td>AI spracovanie textu obhliadky</td><td>[spracovanie aj v USA – prenos na základe štandardných zmluvných doložiek / rámca EÚ–USA; overiť v zmluve s Anthropic a doplniť]</td></tr>
+  <tr><td>Anthropic Ireland, Limited (Írsko) – Claude API; jeho ďalší sprostredkovatelia: Anthropic, PBC (USA) a poskytovatelia cloudovej infraštruktúry (Google Cloud, Amazon Web Services, Microsoft Azure, Cloudflare)</td><td>AI spracovanie textu obhliadky (návrh položiek, chýbajúce informácie) – bez fotiek, zvuku a údajov zákazníka z evidencie</td><td>spracovanie môže prebiehať aj mimo EÚ vrátane USA (spracovanie len v EÚ Anthropic neponúka); prenos na základe štandardných zmluvných doložiek EÚ (modul 3), ktoré sú súčasťou zmluvy o spracúvaní (DPA) s Anthropic; údaje sa nepoužívajú na trénovanie modelov; vstupy a výstupy Anthropic maže do 30 dní (pri podozrení na porušenie pravidiel používania ich môže uchovať až 2 roky)</td></tr>
   <tr><td>[Poskytovateľ prepisu reči – doplniť po výbere]</td><td>prepis hlasových poznámok na text</td><td>[doplniť]</td></tr>
   <tr><td>Apple (App Store, TestFlight)</td><td>distribúcia aplikácie pre iPhone a iPad</td><td>podľa podmienok Apple</td></tr>
   <tr><td>Google (Google Play)</td><td>distribúcia aplikácie pre Android</td><td>podľa podmienok Google Play</td></tr>
