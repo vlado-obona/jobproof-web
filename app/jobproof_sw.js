@@ -12,7 +12,7 @@
 // - písma z fonts.gstatic.com (Flutter si ich sťahuje sám): po prvom stiahnutí z cache
 // - všetko ostatné (Supabase API, Storage, Edge Functions) ide vždy na sieť, nič sa
 //   necachuje – dáta appky drží lokálna databáza, nie service worker
-const VERZIA = '43444ea8c9b926dd';
+const VERZIA = 'fb703ed70c595c99';
 const JADRO = ["assets/AssetManifest.bin", "assets/AssetManifest.bin.json", "assets/FontManifest.json", "assets/fonts/MaterialIcons-Regular.otf", "assets/fonts/fallback/Roboto-Regular.ttf", "assets/shaders/ink_sparkle.frag", "assets/shaders/stretch_effect.frag", "canvaskit/canvaskit.js", "canvaskit/canvaskit.wasm", "favicon.png", "flutter.js", "flutter_bootstrap.js", "icons/Icon-192.png", "icons/Icon-512.png", "icons/Icon-maskable-192.png", "icons/Icon-maskable-512.png", "icons/apple-touch-icon.png", "index.html", "main.dart.js", "manifest.json", "version.json"];
 const CACHE = 'jobproof-app-' + VERZIA;
 const PISMA = 'jobproof-pisma';
