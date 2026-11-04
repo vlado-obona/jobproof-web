@@ -68,8 +68,30 @@ _flutter.buildConfig = {"engineRevision":"deb287481e3ce9468f3434937ced4240a70539
   }
 
   if ('serviceWorker' in navigator) {
+    // Nová verzia appky počas behu (jobproof_sw.js: skipWaiting + claim + zmazanie starej
+    // cache) – bežiaca stará stránka už nesmie znova otvárať databázu so súbormi novej verzie
+    // (drift_worker.js / sqlite3.wasm); lib/app/web_verzia_web.dart ju radšej obnoví.
+    var malController = !!navigator.serviceWorker.controller;
+    navigator.serviceWorker.addEventListener('controllerchange', function () {
+      if (malController) window.jobproofNovaVerzia = true;
+      malController = true;
+    });
     navigator.serviceWorker.register('jobproof_sw.js').catch(function (e) {
       console.warn('JobProof: service worker sa nepodarilo zaregistrovať', e);
+    });
+    // appka na ploche sa po návrate z pozadia len prebudí (žiadna navigácia) – bez
+    // tohto by si iPhone novú verziu (aj návrat na staršiu) všimol až po zabití appky
+    // (o 10 s: najprv nech appka overí a prípadne znova otvorí databázu –
+    // lib/data/spravca_uloziska.dart – až potom môže nová verzia prevziať cache)
+    var kontrolaVerzie = null;
+    document.addEventListener('visibilitychange', function () {
+      clearTimeout(kontrolaVerzie);
+      if (document.visibilityState !== 'visible') return;
+      kontrolaVerzie = setTimeout(function () {
+        navigator.serviceWorker.getRegistration().then(function (r) {
+          if (r) return r.update();
+        }).catch(function () { /* bez siete – skúsi pri ďalšom návrate */ });
+      }, 10000);
     });
   }
   if (standalone && navigator.storage && navigator.storage.persist) {
