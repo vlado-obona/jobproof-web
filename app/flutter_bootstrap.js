@@ -38,7 +38,7 @@ addEventListener("message", eventListener);
 if (!window._flutter) {
   window._flutter = {};
 }
-_flutter.buildConfig = {"engineRevision":"deb287481e3ce9468f3434937ced4240a70539ca","wasmHashes":{"wimp.wasm":"e924eaafd801d41e017d178f3fd5cf8a417f641fe35c9ed34a4e1d7582283e0c","chromium/canvaskit.wasm":"ae8ff1d858140f7b1300ced3fa89fb8c9dce0a400a0f4f1e11f6dcfb3315fdcf","webparagraph/canvaskit.wasm":"0ce1b05082efdc8529550e8a01f6ff0593972d55525035010e26f5600aa9f254","canvaskit.wasm":"fbed517a43e82452404446683f00f2e876d835aed84410695759e67b6bb01cd3","skwasm.wasm":"e540fd5e8303b7b68ec2718cb49e9c421f8ade3075b15e02a7059a62654df9a1","skwasm_heavy.wasm":"565f5cc1cca6ab120f11934b105f01fec4b58b480c82e0889dca93af8e6f8635"},"builds":[{"compileTarget":"dart2js","renderer":"canvaskit","mainJsPath":"main.dart.js"},{}],"useLocalCanvasKit":true};
+_flutter.buildConfig = {"engineRevision":"deb287481e3ce9468f3434937ced4240a70539ca","wasmHashes":{"skwasm.wasm":"e540fd5e8303b7b68ec2718cb49e9c421f8ade3075b15e02a7059a62654df9a1","canvaskit.wasm":"fbed517a43e82452404446683f00f2e876d835aed84410695759e67b6bb01cd3","wimp.wasm":"e924eaafd801d41e017d178f3fd5cf8a417f641fe35c9ed34a4e1d7582283e0c","skwasm_heavy.wasm":"565f5cc1cca6ab120f11934b105f01fec4b58b480c82e0889dca93af8e6f8635","chromium/canvaskit.wasm":"ae8ff1d858140f7b1300ced3fa89fb8c9dce0a400a0f4f1e11f6dcfb3315fdcf","webparagraph/canvaskit.wasm":"0ce1b05082efdc8529550e8a01f6ff0593972d55525035010e26f5600aa9f254"},"builds":[{"compileTarget":"dart2js","renderer":"canvaskit","mainJsPath":"main.dart.js"},{}],"useLocalCanvasKit":true};
 
 
 // JobProof – web appka (PWA) pre pilot na iPhonoch/iPadoch bez TestFlightu.
@@ -68,8 +68,30 @@ _flutter.buildConfig = {"engineRevision":"deb287481e3ce9468f3434937ced4240a70539
   }
 
   if ('serviceWorker' in navigator) {
+    // Nová verzia appky počas behu (jobproof_sw.js: skipWaiting + claim + zmazanie starej
+    // cache) – bežiaca stará stránka už nesmie znova otvárať databázu so súbormi novej verzie
+    // (drift_worker.js / sqlite3.wasm); lib/app/web_verzia_web.dart ju radšej obnoví.
+    var malController = !!navigator.serviceWorker.controller;
+    navigator.serviceWorker.addEventListener('controllerchange', function () {
+      if (malController) window.jobproofNovaVerzia = true;
+      malController = true;
+    });
     navigator.serviceWorker.register('jobproof_sw.js').catch(function (e) {
       console.warn('JobProof: service worker sa nepodarilo zaregistrovať', e);
+    });
+    // appka na ploche sa po návrate z pozadia len prebudí (žiadna navigácia) – bez
+    // tohto by si iPhone novú verziu (aj návrat na staršiu) všimol až po zabití appky
+    // (o 10 s: najprv nech appka overí a prípadne znova otvorí databázu –
+    // lib/data/spravca_uloziska.dart – až potom môže nová verzia prevziať cache)
+    var kontrolaVerzie = null;
+    document.addEventListener('visibilitychange', function () {
+      clearTimeout(kontrolaVerzie);
+      if (document.visibilityState !== 'visible') return;
+      kontrolaVerzie = setTimeout(function () {
+        navigator.serviceWorker.getRegistration().then(function (r) {
+          if (r) return r.update();
+        }).catch(function () { /* bez siete – skúsi pri ďalšom návrate */ });
+      }, 10000);
     });
   }
   if (standalone && navigator.storage && navigator.storage.persist) {
