@@ -53,7 +53,7 @@ Kontakt pre otázky k osobným údajom: <a href="mailto:info@operatorsystem.sk">
   <tr><td>Fotky, hlasové nahrávky a ich prepis, rozmery, poznámky</td><td>záznam obhliadky a realizácie, AI návrh položiek</td><td>plnenie zmluvy / sprostredkovanie</td></tr>
   <tr><td>Podpisy zákazníkov (obrázok podpisu, čas, odtlačok dokumentu)</td><td>dôkaz súhlasu s ponukou, prácou navyše a odovzdaním</td><td>sprostredkovanie</td></tr>
   <tr><td>Dokumenty: ponuky, protokoly, fakturačné podklady (PDF a dáta)</td><td>výstupy pre teba a tvojich zákazníkov</td><td>plnenie zmluvy / sprostredkovanie</td></tr>
-  <tr><td>Poloha telefónu (súradnice) – len po ťuknutí na ikonu polohy pri adrese zákazky</td><td>nájdenie adresy (ulica, obec, PSČ), ktorú appka doplní do zákazky; súradnice sa neukladajú ani nezapisujú do záznamov servera – uloží sa len adresa, ktorú vidíš a môžeš opraviť</td><td>plnenie zmluvy (funkcia, o ktorú požiadaš) [overiť]</td></tr>
+  <tr><td>Poloha telefónu (súradnice) – len po ťuknutí na ikonu polohy pri adrese zákazky</td><td>nájdenie adresy (ulica, obec, PSČ), ktorú appka doplní do zákazky; súradnice sa neukladajú ani nezapisujú do záznamov servera – uloží sa len adresa, ktorú vidíš a môžeš opraviť</td><td>plnenie zmluvy (čl. 6 ods. 1 písm. b) GDPR) – dobrovoľná funkcia, o ktorú sám požiadaš</td></tr>
   <tr><td>Technické záznamy servera (čas, IP adresa pri prihlásení a požiadavkách)</td><td>bezpečnosť, riešenie chýb</td><td>oprávnený záujem (čl. 6 ods. 1 písm. f) GDPR)</td></tr>
 </table>
 </div>
@@ -73,14 +73,12 @@ Kontakt pre otázky k osobným údajom: <a href="mailto:info@operatorsystem.sk">
 
 <h2 id="prepis">Prepis hlasu</h2>
 <p>Hlasové poznámky sa po nahratí zálohujú na náš server a odtiaľ sa pošlú na prepis do textu – appka poskytovateľa
-  prepisu nevolá priamo. Prepis robí <b>Soniox</b> v našom projekte v regióne <b>EÚ</b>; na porovnanie kvality
-  prepisu počas pilotu aj <b>Microsoft Azure AI Speech</b> v regióne Nemecko (Frankfurt). Hotový prepis sa uloží
+  prepisu nevolá priamo. Prepis robí <b>Soniox</b> v našom projekte v regióne <b>EÚ</b>. Hotový prepis sa uloží
   k zákazke v JobProof, nahrávka ostáva ako dôkaz obhliadky.</p>
 <ul>
-  <li><b>U poskytovateľa prepisu nahrávky ani prepisy nenechávame:</b> pri Soniox ich hneď po stiahnutí prepisu
+  <li><b>U poskytovateľa prepisu nahrávky ani prepisy nenechávame:</b> zo Soniox ich hneď po stiahnutí prepisu
     zmažeme (v zálohách Soniox môžu ešte obmedzený čas ostať podľa jeho pravidiel zálohovania – na bežné
-    spracovanie sa nepoužívajú); pri Azure používame len spôsob prepisu, pri ktorom Microsoft nahrávky ani text
-    neukladá (nie dávkový prepis).</li>
+    spracovanie sa nepoužívajú).</li>
   <li>Soniox podľa zmluvy o spracúvaní (DPA) <b>nepoužíva nahrávky ani prepisy na trénovanie</b> ani zlepšovanie
     modelov.</li>
   <li>Do prepisu neposielame meno, telefón ani adresu zákazníka z evidencie – prepíše sa len to, čo do hlasovej
@@ -103,10 +101,9 @@ Kontakt pre otázky k osobným údajom: <a href="mailto:info@operatorsystem.sk">
   <tr><td>Anthropic Ireland, Limited (Írsko) – Claude API; jeho ďalší sprostredkovatelia: Anthropic, PBC (USA) a poskytovatelia cloudovej infraštruktúry (Google Cloud, Amazon Web Services, Microsoft Azure, Cloudflare)</td><td>AI spracovanie textu obhliadky (návrh položiek, chýbajúce informácie) – bez fotiek, zvuku a údajov zákazníka z evidencie</td><td>spracovanie môže prebiehať aj mimo EÚ vrátane USA (spracovanie len v EÚ Anthropic neponúka); prenos na základe štandardných zmluvných doložiek EÚ (modul 3), ktoré sú súčasťou zmluvy o spracúvaní (DPA) s Anthropic; údaje sa nepoužívajú na trénovanie modelov; vstupy a výstupy Anthropic maže do 30 dní (pri podozrení na porušenie pravidiel používania ich môže uchovať až 2 roky)</td></tr>
   <tr><td>[Poskytovateľ prevodu polohy na adresu – doplniť po výbere]</td><td>nájdenie adresy podľa súradníc (len súradnice, bez údajov o tebe – žiadosť posiela náš server)</td><td>[doplniť – EÚ/EHP alebo zmluva o spracúvaní]</td></tr>
   <tr><td>Soniox Inc. (USA) – prepis reči; jeho ďalší sprostredkovatelia sú <a href="#soniox">uvedení nižšie</a></td><td>prepis hlasových poznámok na text</td><td>spracovanie v <b>EÚ</b> (náš projekt je v regióne EÚ); mimo EÚ len obmedzene na zabezpečenie, podporu, prevádzku služby a plnenie povinností zo zákona; prenos na základe štandardných zmluvných doložiek EÚ (modul 2 / 3), ktoré sú súčasťou zmluvy o spracúvaní (DPA) so Soniox; nahrávky ani prepisy sa nepoužívajú na trénovanie; po prepise ich zo Soniox hneď mažeme (prípadné záložné kópie môže Soniox podľa svojich zásad uchovať ešte obmedzený čas); údaje nášho účtu u Soniox (fakturácia, štatistiky používania) sa môžu spracúvať aj mimo EÚ</td></tr>
-  <tr><td>Microsoft Ireland Operations Limited (Írsko) [overiť na faktúre / v Azure portáli – aj to, že zákazníkom Microsoftu je BEDEKA, s.r.o., nie súkromný účet] – Azure AI Speech; jeho ďalší sprostredkovatelia: Microsoft Corporation (USA) a ďalší podľa zoznamu Microsoft Online Services Subprocessors List [doplniť odkaz]</td><td>porovnávací prepis hlasových poznámok počas pilotu</td><td>spracovanie v <b>EÚ</b> – región Nemecko (Frankfurt), v rámci EU Data Boundary; mimo EÚ len obmedzene (napr. vzdialený prístup personálu Microsoftu na prevádzku, riešenie porúch, podporu a zabezpečenie služby); prenos na základe štandardných zmluvných doložiek EÚ (modul 3) medzi Microsoft Ireland Operations Limited a Microsoft Corporation, ktoré sú súčasťou podmienok ochrany údajov Microsoftu (Products and Services DPA – platia pre službu automaticky), a rámca EÚ–USA na ochranu údajov; pri použitom spôsobe prepisu (rýchly prepis alebo prepis v reálnom čase, nie dávkový) Microsoft nahrávky ani text neukladá</td></tr>
   <tr><td>Apple (App Store, TestFlight)</td><td>distribúcia aplikácie pre iPhone a iPad</td><td>podľa podmienok Apple</td></tr>
   <tr><td>Google (Google Play)</td><td>distribúcia aplikácie pre Android</td><td>podľa podmienok Google Play</td></tr>
-  <tr><td>GitHub, Inc. (USA) – GitHub Pages</td><td>hosting tejto webovej stránky a webovej aplikácie pre iPhone a iPad; technické záznamy servera (IP adresa)</td><td>[prenos na základe rámca EÚ–USA na ochranu údajov / štandardných zmluvných doložiek – overiť a doplniť]</td></tr>
+  <tr><td>GitHub, Inc. (USA) – GitHub Pages</td><td>hosting tejto webovej stránky a webovej aplikácie pre iPhone a iPad; technické záznamy pri návšteve stránky (IP adresa) spracúva GitHub podľa svojich zásad ochrany súkromia</td><td>USA; GitHub je certifikovaný podľa rámca EÚ–USA na ochranu údajov (EU-U.S. Data Privacy Framework) a používa aj štandardné zmluvné doložky EÚ; dáta appky (zákazky, fotky, nahrávky) na GitHub nejdú</td></tr>
 </table>
 </div>
 <p>Iným tretím stranám údaje neposkytujeme, okrem prípadov, keď to vyžaduje zákon (napr. na žiadosť orgánu činného v trestnom konaní).</p>
@@ -129,9 +126,9 @@ Kontakt pre otázky k osobným údajom: <a href="mailto:info@operatorsystem.sk">
 <h2>Ako dlho údaje uchovávame</h2>
 <ul>
   <li>Kým máš účet. Jednotlivé zákazky môžeš zmazať aj skôr.</li>
-  <li>Po zmazaní účtu zmažeme všetky údaje vrátane fotiek, nahrávok a dokumentov do <b>30 dní</b>; zo záloh zmiznú pri ich prepísaní, najneskôr do [30] dní.</li>
-  <li>Technické záznamy servera uchovávame najviac [30] dní.</li>
-  <li>Zo Soniox nahrávky a prepisy mažeme hneď po stiahnutí prepisu (záložné kópie môže Soniox uchovať ešte obmedzený čas podľa svojich pravidiel zálohovania); Microsoft ich pri použitom spôsobe prepisu neukladá – pozri <a href="#prepis">Prepis hlasu</a>.</li>
+  <li>Po zmazaní účtu zmažeme všetky údaje vrátane fotiek, nahrávok a dokumentov do <b>30 dní</b>; zo záloh zmiznú pri ich prepísaní, najneskôr do 30 dní.</li>
+  <li>Technické záznamy servera uchovávame najviac 30 dní.</li>
+  <li>Zo Soniox nahrávky a prepisy mažeme hneď po stiahnutí prepisu (záložné kópie môže Soniox uchovať ešte obmedzený čas podľa svojich pravidiel zálohovania) – pozri <a href="#prepis">Prepis hlasu</a>.</li>
 </ul>
 <p class="muted">Ak potrebuješ doklady uchovať kvôli účtovníctvu alebo daniam, exportuj si ich pred zmazaním účtu.</p>
 
