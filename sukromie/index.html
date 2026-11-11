@@ -19,9 +19,7 @@
 <main>
 <div class="card">
 <h1>Zásady ochrany súkromia</h1>
-<p class="muted">Aplikácia <b>JobProof</b> (iPhone, iPad, Android) · pilotná verzia · platné od [DÁTUM SCHVÁLENIA]</p>
-<p class="note"><b>Návrh textu</b> – pred spustením pilotu ho schvaľuje prevádzkovateľ (ideálne s právnikom).
-  Hranaté zátvorky [ ] označujú údaje, ktoré treba doplniť.</p>
+<p class="muted">Aplikácia <b>JobProof</b> (iPhone, iPad, Android) · pilotná verzia · platné od 11. 11. 2026</p>
 
 <h2>Kto spracúva tvoje údaje</h2>
 <p>BEDEKA, s.r.o., Hlavná 2894/47, 080 01 Prešov, Slovensko, IČO 47735511, zapísaná v OR Okresného súdu Prešov, oddiel Sro, vložka č. 30360/P (ďalej „my“).<br>
@@ -31,8 +29,8 @@ Kontakt pre otázky k osobným údajom: <a href="mailto:info@operatorsystem.sk">
 <ul>
   <li>Údaje používame <b>len na to, aby appka fungovala</b> – uloženie a záloha tvojich zákaziek, AI spracovanie obhliadky, tvorba dokumentov.</li>
   <li><b>Žiadne reklamy</b>, žiadne reklamné ani sledovacie nástroje, údaje <b>nepredávame</b> a nezdieľame na marketing.</li>
-  <li>Appka <b>nezisťuje polohu</b>; z fotiek polohu (EXIF) odstraňujeme.</li>
-  <li>Dáta sú uložené na serveroch v <b>EÚ (Frankfurt)</b>, prenos je šifrovaný. AI spracovanie textu obhliadky môže prebiehať aj mimo EÚ (<a href="#ai">pozri nižšie</a>).</li>
+  <li>Polohu telefónu appka zistí <b>len keď o to požiadaš</b> – ťuknutím na ikonu polohy pri adrese zákazky, aby adresu doplnila. Polohu <b>neukladáme</b> ani nesledujeme; z fotiek polohu (EXIF) odstraňujeme.</li>
+  <li>Dáta sú uložené na serveroch v <b>EÚ (Frankfurt)</b>, prenos je šifrovaný. Prepis hlasu prebieha v <b>EÚ</b> (<a href="#prepis">pozri nižšie</a>); AI spracovanie textu obhliadky môže prebiehať aj mimo EÚ (<a href="#ai">pozri nižšie</a>).</li>
   <li>Účet aj všetky dáta môžeš kedykoľvek <a href="../zmazanie-uctu/">zmazať</a>.</li>
 </ul>
 
@@ -53,10 +51,11 @@ Kontakt pre otázky k osobným údajom: <a href="mailto:info@operatorsystem.sk">
   <tr><td>Fotky, hlasové nahrávky a ich prepis, rozmery, poznámky</td><td>záznam obhliadky a realizácie, AI návrh položiek</td><td>plnenie zmluvy / sprostredkovanie</td></tr>
   <tr><td>Podpisy zákazníkov (obrázok podpisu, čas, odtlačok dokumentu)</td><td>dôkaz súhlasu s ponukou, prácou navyše a odovzdaním</td><td>sprostredkovanie</td></tr>
   <tr><td>Dokumenty: ponuky, protokoly, fakturačné podklady (PDF a dáta)</td><td>výstupy pre teba a tvojich zákazníkov</td><td>plnenie zmluvy / sprostredkovanie</td></tr>
+  <tr><td>Poloha telefónu (súradnice) – len po ťuknutí na ikonu polohy pri adrese zákazky</td><td>nájdenie adresy (ulica, obec, PSČ), ktorú appka doplní do zákazky; súradnice sa neukladajú ani nezapisujú do záznamov servera – uloží sa len adresa, ktorú vidíš a môžeš opraviť</td><td>plnenie zmluvy (čl. 6 ods. 1 písm. b) GDPR) – dobrovoľná funkcia, o ktorú sám požiadaš</td></tr>
   <tr><td>Technické záznamy servera (čas, IP adresa pri prihlásení a požiadavkách)</td><td>bezpečnosť, riešenie chýb</td><td>oprávnený záujem (čl. 6 ods. 1 písm. f) GDPR)</td></tr>
 </table>
 </div>
-<p>Údaje sa najprv ukladajú v telefóne a potom sa zálohujú na server. Appka nepoužíva polohu, kontakty ani iné údaje z telefónu.</p>
+<p>Údaje sa najprv ukladajú v telefóne a potom sa zálohujú na server. Appka nepoužíva kontakty ani iné údaje z telefónu; polohu len jednorazovo na doplnenie adresy zákazky, keď o to požiadaš.</p>
 <p>Na iPhone a iPad je JobProof počas pilotu <b>webová aplikácia</b>, ktorú si pridáš na plochu z adresy
   <a href="../app/">vlado-obona.github.io/jobproof-web/app/</a>. Údaje sa ukladajú v úložisku tejto aplikácie
   v telefóne (oddelene od prehliadača Safari) a potom sa zálohujú na server. Ak ikonu appky z plochy odstrániš,
@@ -66,7 +65,22 @@ Kontakt pre otázky k osobným údajom: <a href="mailto:info@operatorsystem.sk">
 <ul>
   <li><b>Fotoaparát</b> – fotky z obhliadky a realizácie (len keď fotíš).</li>
   <li><b>Mikrofón</b> – hlasové poznámky (len keď nahrávaš).</li>
-  <li><b>Internet</b> – záloha a AI spracovanie.</li>
+  <li><b>Poloha</b> – len keď pri adrese zákazky ťukneš na ikonu polohy; zistí sa raz, nikdy na pozadí. Bez povolenia adresu jednoducho napíšeš.</li>
+  <li><b>Internet</b> – záloha, prepis hlasu a AI spracovanie.</li>
+</ul>
+
+<h2 id="prepis">Prepis hlasu</h2>
+<p>Hlasové poznámky sa po nahratí zálohujú na náš server a odtiaľ sa pošlú na prepis do textu – appka poskytovateľa
+  prepisu nevolá priamo. Prepis robí <b>Soniox</b> v našom projekte v regióne <b>EÚ</b>. Hotový prepis sa uloží
+  k zákazke v JobProof, nahrávka ostáva ako dôkaz obhliadky.</p>
+<ul>
+  <li><b>U poskytovateľa prepisu nahrávky ani prepisy nenechávame:</b> zo Soniox ich hneď po stiahnutí prepisu
+    zmažeme (v zálohách Soniox môžu ešte obmedzený čas ostať podľa jeho pravidiel zálohovania – na bežné
+    spracovanie sa nepoužívajú).</li>
+  <li>Soniox podľa zmluvy o spracúvaní (DPA) <b>nepoužíva nahrávky ani prepisy na trénovanie</b> ani zlepšovanie
+    modelov.</li>
+  <li>Do prepisu neposielame meno, telefón ani adresu zákazníka z evidencie – prepíše sa len to, čo do hlasovej
+    poznámky povieš.</li>
 </ul>
 
 <h2 id="ai">AI spracovanie</h2>
@@ -74,7 +88,7 @@ Kontakt pre otázky k osobným údajom: <a href="mailto:info@operatorsystem.sk">
   spracovanie modelom AI (Claude od spoločnosti Anthropic), ktorý navrhne položky ponuky a zoznam chýbajúcich
   informácií. Appka nikdy nevolá AI priamo. <b>Fotky ani zvukové nahrávky AI neposielame</b> a údaje zákazníka
   z evidencie (meno, telefón, adresu) tiež nie – v prepise však ostane, čo do hlasovej poznámky povieš.
-  Poskytovatelia AI <b>nesmú používať tvoje dáta na trénovanie</b> svojich modelov. Návrh vždy kontroluješ
+  Anthropic <b>nesmie používať tvoje dáta na trénovanie</b> svojich modelov. Návrh vždy kontroluješ
   a potvrdzuješ ty – AI o ničom nerozhoduje (ceny ani DPH neurčuje).</p>
 
 <h2>Komu údaje odovzdávame (sprostredkovatelia)</h2>
@@ -83,19 +97,36 @@ Kontakt pre otázky k osobným údajom: <a href="mailto:info@operatorsystem.sk">
   <tr><th>Kto</th><th>Na čo</th><th>Kde</th></tr>
   <tr><td>Supabase Pte. Ltd. (Singapur)</td><td>databáza, úložisko súborov, prihlásenie, serverové funkcie</td><td>údaje uložené v EÚ – Frankfurt (Nemecko); prípadný prístup z krajín mimo EÚ len na základe štandardných zmluvných doložiek EÚ (zmluva o spracúvaní so Supabase)</td></tr>
   <tr><td>Anthropic Ireland, Limited (Írsko) – Claude API; jeho ďalší sprostredkovatelia: Anthropic, PBC (USA) a poskytovatelia cloudovej infraštruktúry (Google Cloud, Amazon Web Services, Microsoft Azure, Cloudflare)</td><td>AI spracovanie textu obhliadky (návrh položiek, chýbajúce informácie) – bez fotiek, zvuku a údajov zákazníka z evidencie</td><td>spracovanie môže prebiehať aj mimo EÚ vrátane USA (spracovanie len v EÚ Anthropic neponúka); prenos na základe štandardných zmluvných doložiek EÚ (modul 3), ktoré sú súčasťou zmluvy o spracúvaní (DPA) s Anthropic; údaje sa nepoužívajú na trénovanie modelov; vstupy a výstupy Anthropic maže do 30 dní (pri podozrení na porušenie pravidiel používania ich môže uchovať až 2 roky)</td></tr>
-  <tr><td>[Poskytovateľ prepisu reči – doplniť po výbere]</td><td>prepis hlasových poznámok na text</td><td>[doplniť]</td></tr>
+  <tr><td>[Poskytovateľ prevodu polohy na adresu – doplniť po výbere]</td><td>nájdenie adresy podľa súradníc (len súradnice, bez údajov o tebe – žiadosť posiela náš server)</td><td>[doplniť – EÚ/EHP alebo zmluva o spracúvaní]</td></tr>
+  <tr><td>Soniox Inc. (USA) – prepis reči; jeho ďalší sprostredkovatelia sú <a href="#soniox">uvedení nižšie</a></td><td>prepis hlasových poznámok na text</td><td>spracovanie v <b>EÚ</b> (náš projekt je v regióne EÚ); mimo EÚ len obmedzene na zabezpečenie, podporu, prevádzku služby a plnenie povinností zo zákona; prenos na základe štandardných zmluvných doložiek EÚ (modul 2 / 3), ktoré sú súčasťou zmluvy o spracúvaní (DPA) so Soniox; nahrávky ani prepisy sa nepoužívajú na trénovanie; po prepise ich zo Soniox hneď mažeme (prípadné záložné kópie môže Soniox podľa svojich zásad uchovať ešte obmedzený čas); údaje nášho účtu u Soniox (fakturácia, štatistiky používania) sa môžu spracúvať aj mimo EÚ</td></tr>
   <tr><td>Apple (App Store, TestFlight)</td><td>distribúcia aplikácie pre iPhone a iPad</td><td>podľa podmienok Apple</td></tr>
   <tr><td>Google (Google Play)</td><td>distribúcia aplikácie pre Android</td><td>podľa podmienok Google Play</td></tr>
-  <tr><td>GitHub, Inc. (USA) – GitHub Pages</td><td>hosting tejto webovej stránky a webovej aplikácie pre iPhone a iPad; technické záznamy servera (IP adresa)</td><td>[prenos na základe rámca EÚ–USA na ochranu údajov / štandardných zmluvných doložiek – overiť a doplniť]</td></tr>
+  <tr><td>GitHub, Inc. (USA) – GitHub Pages</td><td>hosting tejto webovej stránky a webovej aplikácie pre iPhone a iPad; technické záznamy pri návšteve stránky (IP adresa) spracúva GitHub podľa svojich zásad ochrany súkromia</td><td>USA; GitHub je certifikovaný podľa rámca EÚ–USA na ochranu údajov (EU-U.S. Data Privacy Framework) a používa aj štandardné zmluvné doložky EÚ; dáta appky (zákazky, fotky, nahrávky) na GitHub nejdú</td></tr>
 </table>
 </div>
 <p>Iným tretím stranám údaje neposkytujeme, okrem prípadov, keď to vyžaduje zákon (napr. na žiadosť orgánu činného v trestnom konaní).</p>
 
+<h3 id="soniox">Ďalší sprostredkovatelia Soniox</h3>
+<p class="muted">Podľa zoznamu subdodávateľov Soniox (verzia 1.1 z 12. 10. 2026), ktorý Soniox poskytuje zákazníkom k zmluve
+  o spracúvaní; o novom subdodávateľovi nás Soniox podľa tejto zmluvy vopred upozorní a my upozorníme teba.
+  Pri našom projekte v regióne EÚ idú nahrávky na infraštruktúru v EÚ (cez sieť Cloudflare).</p>
+<div class="table-wrap">
+<table>
+  <tr><th>Kto</th><th>Na čo</th><th>Kde</th></tr>
+  <tr><td>Amazon Web Services</td><td>cloudová infraštruktúra</td><td>pre náš projekt EÚ (USA, Japonsko a ďalšie regióny len pri projektoch Soniox v iných regiónoch, nie pri našom)</td></tr>
+  <tr><td>Google Cloud Platform</td><td>cloudová infraštruktúra</td><td>pre náš projekt EÚ (USA, Japonsko a ďalšie regióny len pri projektoch Soniox v iných regiónoch, nie pri našom)</td></tr>
+  <tr><td>Oracle Cloud Infrastructure</td><td>cloudová infraštruktúra</td><td>pre náš projekt EÚ (USA, Japonsko a ďalšie regióny len pri projektoch Soniox v iných regiónoch, nie pri našom)</td></tr>
+  <tr><td>Cloudflare</td><td>sieť, doručovanie obsahu, ochrana pred útokmi (DDoS)</td><td>globálne</td></tr>
+  <tr><td>Stripe, Google Workspace, Vanta, Clerk</td><td>platby a fakturácia, e-mail a dokumenty, bezpečnostný súlad, prihlásenie do konzoly Soniox – <b>len údaje nášho účtu u Soniox</b>, nie nahrávky ani prepisy</td><td>USA / globálne</td></tr>
+</table>
+</div>
+
 <h2>Ako dlho údaje uchovávame</h2>
 <ul>
   <li>Kým máš účet. Jednotlivé zákazky môžeš zmazať aj skôr.</li>
-  <li>Po zmazaní účtu zmažeme všetky údaje vrátane fotiek, nahrávok a dokumentov do <b>30 dní</b>; zo záloh zmiznú pri ich prepísaní, najneskôr do [30] dní.</li>
-  <li>Technické záznamy servera uchovávame najviac [30] dní.</li>
+  <li>Po zmazaní účtu zmažeme všetky údaje vrátane fotiek, nahrávok a dokumentov do <b>30 dní</b>; zo záloh zmiznú pri ich prepísaní, najneskôr do 30 dní.</li>
+  <li>Technické záznamy servera uchovávame najviac 30 dní.</li>
+  <li>Zo Soniox nahrávky a prepisy mažeme hneď po stiahnutí prepisu (záložné kópie môže Soniox uchovať ešte obmedzený čas podľa svojich pravidiel zálohovania) – pozri <a href="#prepis">Prepis hlasu</a>.</li>
 </ul>
 <p class="muted">Ak potrebuješ doklady uchovať kvôli účtovníctvu alebo daniam, exportuj si ich pred zmazaním účtu.</p>
 
